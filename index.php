@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+      <!-- Gambar ada yang Error? Mohon Baca warning_info.txt -->
       <aside>
 
             <header>
