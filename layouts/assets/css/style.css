@@ -1,0 +1,212 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+aside {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f1c137;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.brand {
+  width: 80px;
+}
+
+.user {
+  font-weight: bold;
+  padding-top: 10px;
+  color: #0079c2;
+}
+
+main {
+  margin-left: 210px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  padding: 10px 20px;
+  margin: 5px 0 5px 0;
+  display: block;
+  color: #000000;
+  font-weight: 700;
+}
+
+nav a:hover {
+  background-color: #0079c2;
+}
+
+nav .icon {
+  width: 25px;
+  float: left;
+  padding-right: 10px;
+}
+
+.info {
+  background-color: #f5f7fa;
+  padding: 20px;
+  margin-top: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f1c137;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.btn {
+  background-color: #1a6ed8;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 5px;
+}
+
+.btn_simpan:hover {
+  background-color: #1e7ff5;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  padding: 20px 0 20px 10px;
+  background-color: #f5f7fa;
+  width: 100%;
+  border-top: 1px solid #d8dadf;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 150px;
+}
+.container_promo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 150px;
+}
+.item {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.item_promo {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.item h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+.item .nama {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.item .harga {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f28418;
+}
+.item_promo .harga {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f28418;
+}
+
+form table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+form table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+form table td:first-child {
+  width: 100px;
+}
+
+form table td:nth-child(2) {
+  width: 70%;
+}
+
+form table tr:nth-child(even) td {
+  background-color: #f2f2f2;
+}
+
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+  padding: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+  background-color: #1a6ed8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
