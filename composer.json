@@ -13,5 +13,7 @@
             "email": "rizkysrg62@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^8.0"
+    }
 }
