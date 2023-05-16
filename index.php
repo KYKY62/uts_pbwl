@@ -38,8 +38,8 @@
                               </a>
                         </li>
                         <li>
-                              <a href="#">
-                                    <img class="icon" src="layouts/assets/img/menu.png" alt=""> Logout
+                              <a href="index.php?hal=pembeli_tampil">
+                                    <img class="icon" src="layouts/assets/img/menu.png" alt=""> Pembeli
                               </a>
                         </li>
                   </ul>

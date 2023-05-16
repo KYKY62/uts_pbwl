@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Bulan Mei 2023 pada 01.08
+-- Waktu pembuatan: 16 Bulan Mei 2023 pada 18.33
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -56,37 +56,22 @@ INSERT INTO `tb_category` (`cat_id`, `cat_name`, `cat_text`, `foto_barang`) VALU
 
 CREATE TABLE `tb_pembeli` (
   `pembeli_id` int(11) NOT NULL,
-  `pembeli_id_post` int(11) NOT NULL,
+  `pembeli_id_promo` int(11) NOT NULL,
+  `pembeli_id_cat` int(10) NOT NULL,
   `pembeli_title` varchar(100) NOT NULL,
-  `pembeli_file` varchar(256) NOT NULL
+  `jumlah_beli` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `tb_post`
+-- Dumping data untuk tabel `tb_pembeli`
 --
 
-CREATE TABLE `tb_post` (
-  `post_id` int(11) NOT NULL,
-  `post_id_cat` int(11) NOT NULL,
-  `post_slug` varchar(25) NOT NULL,
-  `post_title` varchar(100) NOT NULL,
-  `post_text` text NOT NULL,
-  `post_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_product`
---
-
-CREATE TABLE `tb_product` (
-  `product_id` int(11) NOT NULL,
-  `product_id_pembeli` int(11) NOT NULL,
-  `product_title` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+INSERT INTO `tb_pembeli` (`pembeli_id`, `pembeli_id_promo`, `pembeli_id_cat`, `pembeli_title`, `jumlah_beli`) VALUES
+(1, 1, 13, 'saefudina', 2),
+(2, 1, 13, 'anto botak', 1),
+(3, 3, 5, 'Arhan', 1),
+(4, 4, 6, 'bambang', 2),
+(5, 2, 1, 'Suparman', 1);
 
 -- --------------------------------------------------------
 
@@ -115,24 +100,6 @@ INSERT INTO `tb_promo` (`id`, `banner_promo`, `judul_promo`, `masa_berlaku`) VAL
 (7, 'promo_7.jpg', 'Yuk Bikin Kue! Tersedia Beragam Varian Bahan Kue di Klik Indomaret', '01 Jan 2023 - 31 Dec 2023'),
 (8, 'promo_8.jpg', 'Beauty & Hair Care Festival diskon hingga 35%', '09 Mei 2023 - 15 Mei 2023');
 
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `user`
---
-
-CREATE TABLE `user` (
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `user`
---
-
-INSERT INTO `user` (`username`, `password`) VALUES
-('admin', 'admin');
-
 --
 -- Indexes for dumped tables
 --
@@ -148,22 +115,8 @@ ALTER TABLE `tb_category`
 --
 ALTER TABLE `tb_pembeli`
   ADD PRIMARY KEY (`pembeli_id`),
-  ADD UNIQUE KEY `photo_id_post` (`pembeli_id_post`);
-
---
--- Indeks untuk tabel `tb_post`
---
-ALTER TABLE `tb_post`
-  ADD PRIMARY KEY (`post_id`),
-  ADD UNIQUE KEY `post_id_cat` (`post_id_cat`),
-  ADD UNIQUE KEY `post_id_cat_2` (`post_id_cat`);
-
---
--- Indeks untuk tabel `tb_product`
---
-ALTER TABLE `tb_product`
-  ADD PRIMARY KEY (`product_id`),
-  ADD UNIQUE KEY `album_id_photo` (`product_id_pembeli`);
+  ADD KEY `pembeli_id_promo` (`pembeli_id_promo`,`pembeli_id_cat`),
+  ADD KEY `pembeli_id_cat` (`pembeli_id_cat`);
 
 --
 -- Indeks untuk tabel `tb_promo`
@@ -179,25 +132,13 @@ ALTER TABLE `tb_promo`
 -- AUTO_INCREMENT untuk tabel `tb_category`
 --
 ALTER TABLE `tb_category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pembeli`
 --
 ALTER TABLE `tb_pembeli`
-  MODIFY `pembeli_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `tb_post`
---
-ALTER TABLE `tb_post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `tb_product`
---
-ALTER TABLE `tb_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pembeli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_promo`
@@ -213,19 +154,8 @@ ALTER TABLE `tb_promo`
 -- Ketidakleluasaan untuk tabel `tb_pembeli`
 --
 ALTER TABLE `tb_pembeli`
-  ADD CONSTRAINT `tb_pembeli_ibfk_1` FOREIGN KEY (`pembeli_id_post`) REFERENCES `tb_post` (`post_id`);
-
---
--- Ketidakleluasaan untuk tabel `tb_post`
---
-ALTER TABLE `tb_post`
-  ADD CONSTRAINT `tb_post_ibfk_1` FOREIGN KEY (`post_id_cat`) REFERENCES `tb_category` (`cat_id`);
-
---
--- Ketidakleluasaan untuk tabel `tb_product`
---
-ALTER TABLE `tb_product`
-  ADD CONSTRAINT `tb_product_ibfk_1` FOREIGN KEY (`product_id_pembeli`) REFERENCES `tb_pembeli` (`pembeli_id`);
+  ADD CONSTRAINT `tb_pembeli_ibfk_1` FOREIGN KEY (`pembeli_id_promo`) REFERENCES `tb_promo` (`id`),
+  ADD CONSTRAINT `tb_pembeli_ibfk_2` FOREIGN KEY (`pembeli_id_cat`) REFERENCES `tb_category` (`cat_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
